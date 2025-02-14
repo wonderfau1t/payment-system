@@ -9,7 +9,7 @@ COPY . .
 
 WORKDIR /app/cmd/payment-system
 
-RUN go build -o payment-system
+RUN CGO_ENABLED=0 go build -o payment-system
 FROM alpine:latest
 
 WORKDIR /app
