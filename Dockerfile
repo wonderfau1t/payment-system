@@ -9,13 +9,15 @@ COPY . .
 
 WORKDIR /app/cmd/payment-system
 
-RUN CGO_ENABLED=0 go build -o payment-system
+RUN go build -o payment-system .
+
 FROM alpine:latest
 
 WORKDIR /app
 
 COPY --from=builder /app/cmd/payment-system/payment-system .
 COPY config/config.yaml ./config/
+COPY storage/payment_system.db ./storage/
 
 RUN apk --no-cache add \
     sqlite \
