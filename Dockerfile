@@ -22,5 +22,5 @@ RUN apk --no-cache add \
     ca-certificates
 
 EXPOSE 8080
-
+RUN export CONFIG_PATH=./config/config.yaml
 CMD ["./payment-system"]
