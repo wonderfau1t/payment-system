@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"infotecs-tz/internal/config"
@@ -44,6 +45,7 @@ func main() {
 		}
 		for _, address := range addresses {
 			err := storage.AddAddress(address, 100)
+			log.Info(fmt.Sprintf("Created address: %s with balance: 100", address))
 			if err != nil {
 				log.Error(err.Error())
 			}
